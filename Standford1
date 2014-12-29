@@ -1,7 +1,9 @@
 /* Author: Luigi Vincent
+
 Challenge 1: Given a string, for each digit in the original string,
 replace the digit with that many occurences of the character following.
 So "a3tx2z" yields "attttxzzz"
+
 Found browsing for cs via web.standford.edu/
 */
 
