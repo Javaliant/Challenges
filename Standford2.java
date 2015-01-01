@@ -9,17 +9,20 @@ Found browsing for cs via web.standford.edu/
 public class Standford2 {
 	public static void main(String[] args) {
 		System.out.println("Test 1: " + (1  == maxRun("123")));
-		System.out.println("Test 1: " + (2  == maxRun("1223")));
-		System.out.println("Test 1: " + (2  == maxRun("112233")));
-		System.out.println("Test 1: " + (3  == maxRun("1112233"))); 
+		System.out.println("Test 2: " + (2  == maxRun("1223")));
+		System.out.println("Test 3: " + (2  == maxRun("112233")));
+		System.out.println("Test 4: " + (3  == maxRun("1112233")));
+		System.out.println("Test 5: " + (2  == maxRun("hoopla")));
+		System.out.println("Test 6: " + (3  == maxRun("hoopllla")));
+		System.out.println("Test 7: " + (3  == maxRun("abbcccddbbbxx")));
+		System.out.println("Test 8: " + (0  == maxRun("")));
+		System.out.println("Test 9: " + (3  == maxRun("hhhooppoo")));
 	}
 
 	public static int maxRun(String str) {
 		if (str.length() == 0) { return 0; }
 
-		int maxCheck = 0,
-			maxRun = 1,
-			currentRun = 1;
+		int maxRun = 1, currentRun = 1;
 
 		if (str.length() == 1) { return maxRun; }
 
