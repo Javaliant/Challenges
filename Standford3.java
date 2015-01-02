@@ -55,13 +55,9 @@ public class Standford3 {
 		}
 
 		Set<String> result = new HashSet<>();
-		int tracker = length;
 
-		for (int i = 0; i < str.length(); i++ ) {
-			if (tracker > str.length()) { break; }
-
-			result.add(str.substring(i, tracker));
-			tracker++;
+		for (int i = 0; i <= str.length() - length; i++) {
+    		result.add(str.substring(i, i + length));
 		}
 
 		return result;
