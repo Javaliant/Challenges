@@ -9,6 +9,7 @@ Found browsing for cs via web.standford.edu/
 */
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Standford3 {
 	public static void main(String[] args) {
@@ -27,13 +28,16 @@ public class Standford3 {
 		System.out.println("Test 5: " +
 			(true  == stringIntersect("nowai", "55&dcsnow", 3))
 		);
+		System.out.println("Test 6: " +
+			(true  == stringIntersect("awaicain", "wai", 3))
+		);
 	}
 
 	public static boolean stringIntersect(String a, String b, int len) {
 		if (a.length() == 0 || b.length() == 0) { return false; }
 
-		HashSet<String> alpha = permutateString(a, len);
-		HashSet<String> beta = permutateString(b, len);
+		Set<String> alpha = permutateString(a, len);
+		Set<String> beta = permutateString(b, len);
 
 		for (String s : alpha) {
 			if (beta.contains(s)) { return true; }
@@ -43,23 +47,23 @@ public class Standford3 {
 	}
 
 
-	public static HashSet<String> permutateString(String str, int i) {
-		if (i > str.length()) {
+	public static Set<String> permutateString(String str, int length) {
+		if (length > str.length()) {
 			throw new IllegalArgumentException(
 				"Substring length cannot be larger than provided string"
 			);
 		}
 
-		HashSet<String> set = new HashSet<>();
-		int count = i;
+		Set<String> result = new HashSet<>();
+		int tracker = length;
 
-		for (int j = 0; j < str.length(); j++ ) {
-			if (count > str.length()) { break; }
+		for (int i = 0; i < str.length(); i++ ) {
+			if (tracker > str.length()) { break; }
 
-			set.add(str.substring(j, count));
-			count++;
+			result.add(str.substring(i, tracker));
+			tracker++;
 		}
 
-		return set;
+		return result;
 	}
 }
