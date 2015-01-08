@@ -5,22 +5,19 @@ What is the LCM of 1 through 20?
 */
 
 import java.util.ArrayList;
+import java.util.stream.LongStream;
 
-public class Euler5Alt {
+public class Euler5 {
 	public static void main(String[] args) {
 		long startTime = System.nanoTime();
 		final long MAX_NUM = 20L;
 
-		ArrayList<Long> numbers = new ArrayList<Long>() {
-			{ for (long i = 1L; i <= MAX_NUM; i++) { add(i); } }
-		};
-
-		long result = numbers
-			.stream().reduce(Euler5::lcm).get();
+		long result = LongStream.rangeClosed(1, MAX_NUM)
+        	.reduce(Euler5::lcm).getAsLong();
 
 		System.out.print("Result: " + result +
-				".\nTime used for calculation in nanoseconds: " +
-				(System.nanoTime() - startTime) + ".");
+			".\nTime used for calculation in nanoseconds: " +
+			(System.nanoTime() - startTime) + ".");
 	}
 
 	/*Greatest Common Divisor
