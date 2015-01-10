@@ -13,14 +13,14 @@ public class Euler2 {
     public static void main(String[] args) {
         final long START = System.nanoTime(),
             MAX_NUM = 4000000L;
-        Long result = 0L;
+        long result = 0L;
 
         ArrayList<Long> sequence = new ArrayList<Long>() {
             { add(1L); add(2L); }
         };
 
         int i = 0;
-        Long nextTerm = sequence.get(i++) + sequence.get(i);
+        long nextTerm = sequence.get(i++) + sequence.get(i);
         while (nextTerm <= MAX_NUM) {
             sequence.add(nextTerm);
             nextTerm = sequence.get(i++) + sequence.get(i);
@@ -36,9 +36,11 @@ public class Euler2 {
             j += 3;
         }
 
+        final long END = System.nanoTime();
+
         System.out.print("Result: " + result +
         	".\nTime used for calculation in nanoseconds: " +
-            (System.nanoTime() - START) + "."
+            (END - START) + "."
         );
     }
 }
