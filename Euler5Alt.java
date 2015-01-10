@@ -9,15 +9,18 @@ import java.util.stream.LongStream;
 
 public class Euler5 {
 	public static void main(String[] args) {
-		long startTime = System.nanoTime();
+		final long START = System.nanoTime();
 		final long MAX_NUM = 20L;
 
 		long result = LongStream.rangeClosed(1, MAX_NUM)
         	.reduce(Euler5::lcm).getAsLong();
+        	
+        	final long END = System.nanoTime();
 
 		System.out.print("Result: " + result +
 			".\nTime used for calculation in nanoseconds: " +
-			(System.nanoTime() - startTime) + ".");
+			(END - START) + "."
+		);
 	}
 
 	/*Greatest Common Divisor
