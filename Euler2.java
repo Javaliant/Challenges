@@ -13,34 +13,33 @@ public class Euler2 {
     public static void main(String[] args) {
         final long START = System.nanoTime(),
             MAX_NUM = 4000000L;
-        long result = 0L;
-
-        ArrayList<Long> sequence = new ArrayList<Long>() {
-            { add(1L); add(2L); }
-        };
-
-        int i = 0;
-        long nextTerm = sequence.get(i++) + sequence.get(i);
-        while (nextTerm <= MAX_NUM) {
-            sequence.add(nextTerm);
-            nextTerm = sequence.get(i++) + sequence.get(i);
-        }
-        
-        /* Leveraging the absence of consecutive even numbers
-        and the fact that Odd + Even is Odd, and Odd + Odd is even,
-        retrieve every third term after an even term until no longer possible
-        */
-        int j = 1;
-        while (j <= i) {
-            result += sequence.get(j);
-            j += 3;
-        }
+        long result = sumEvenFibNums(MAX_NUM);     
 
         final long END = System.nanoTime();
 
         System.out.print("Result: " + result +
-        	".\nTime used for calculation in nanoseconds: " +
+            ".\nTime used for calculation in nanoseconds: " +
             (END - START) + "."
         );
     }
+
+    /* Leveraging the absence of consecutive even numbers
+    and the fact that Odd + Even is Odd, and Odd + Odd is even,
+    this method retrieves and sums every third term until no longer possible
+    */
+    public static long sumEvenFibNums(long limit) {
+        long evenSum = 0,
+            priorPrecedingOdd,
+            precedingOdd = 1,
+            even = 2;
+
+        while (even <= limit) {
+            evenSum += even;
+            priorPrecedingOdd = even + precedingOdd;
+            precedingOdd = priorPrecedingOdd + even;
+            even = precedingOdd + priorPrecedingOdd;
+        }
+
+        return evenSum;
+    }   
 }
