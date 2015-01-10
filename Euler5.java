@@ -5,7 +5,7 @@ What is the smallest positive number that is evenly divisible by 1-20
 
 public class Euler5 {
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
+        final long START = System.nanoTime();
         final int MAX_NUM = 20,
            	GIVEN = 2520;
         int result = GIVEN;
@@ -25,11 +25,14 @@ public class Euler5 {
         while (!isSmallestMultiple(result)) {
             result += result;
         }
+        
+        final long END = System.nanoTime();
 
         System.out.print("Result: " + result +
         	".\nTime used for calculation in nanoseconds: " +
-            (System.nanoTime() - startTime) + ".");
-        }
+            	(END - START) + "."
+        );
+    }
 
     public static boolean isSmallestMultiple(int n) {
         for (int i = 11; i <= MAX_NUM; i++) {
