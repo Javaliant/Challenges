@@ -6,8 +6,8 @@ What is the largest prime factor of the number 600851475143?
 
 public class Euler3 {
 	public static void main(String[] args) {
-		long startTime = System.nanoTime(),
-			result = 600851475143L,
+		final long START = System.nanoTime();
+		long result = 600851475143L,
 			divisor = 2L;
 
 		while (divisor * divisor <= result) {
@@ -17,9 +17,12 @@ public class Euler3 {
 				divisor++;
 			}
 		}
+		
+		final long END = System.nanoTime();
 
 		System.out.print("Result: " + result +
 			".\nTime used for calculation in nanoseconds: " +
-			(System.nanoTime() - startTime) + ".");
+			(END - START) + "."
+		);
 	}
 }
