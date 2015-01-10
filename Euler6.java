@@ -16,12 +16,14 @@ and the square of the sum.
 
 public class Euler6 {
 	public static void main(String[] args) {
-		long startTime = System.nanoTime();
+		final long START = System.nanoTime();
 		int result = sumSquareDifference(100);
+		final long END = System.nanoTime();
 
 		System.out.print("Result: " + result +
 			".\nTime used for calculation in nanoseconds: " +
-			(System.nanoTime() - startTime) + ".");
+			(END - START) + "."
+		);
 	}
 
 	public static int sumSquareDifference(int n) {
