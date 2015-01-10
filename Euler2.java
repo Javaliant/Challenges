@@ -25,7 +25,7 @@ public class Euler2 {
 
     /* Leveraging the absence of consecutive even numbers
     and the fact that Odd + Even is Odd, and Odd + Odd is even,
-    this method retrieves and sums every third term until no longer possible
+    this method retrieves and sums every third term, i.e the evens.
     */
     public static long sumEvenFibNums(long limit) {
         long evenSum = 0,
