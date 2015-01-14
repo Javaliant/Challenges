@@ -29,20 +29,17 @@ public class Euler10 {
 			".\nTime used for calculation in nanoseconds: " +
 			(END - START) + "."
 		);
-    	}
+    }
 
-	public static boolean isPrime(long n) {
-    		if (n == 1) { return false; }
-    		else if (n < 4) { return true; }
-   		else if (n % 2 == 0 || n % 3 == 0) {
-        		return false;
-    		} else {
-        		for (int i = 5; i * i <= n; i += 6) {
-            			if (n % i == 0 || n % (i + 2) == 0) {
-                			return false;
-            			}
-        		}
-        		return true;
-    		}
-	}
+    public static boolean isPrime(int num) {
+    	if (num <= 3) { return num > 1; }
+    	if ((num & 1) == 0 || num % 3 == 0) { return false; }
+
+    	int limit = (int) Math.sqrt(num);
+
+    	for (int i = 5; i <= limit; i += 6) {
+      		if (num % i == 0 || num % (i + 2) == 0) { return false; }
+    	}
+    	return true;
+  }
 }
