@@ -13,7 +13,7 @@ public class Euler5 {
 		final long MAX_NUM = 20L;
 
 		long result = LongStream.rangeClosed(1, MAX_NUM)
-        	.reduce(Euler5::lcm).getAsLong();
+			.reduce(Euler5::lcm).getAsLong();
         	
         	final long END = System.nanoTime();
 
