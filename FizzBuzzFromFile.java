@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FizzBuzz {
+public class FizzBuzzFromFile {
     public static void main(String[] args) throws FileNotFoundException {
     	File file = new File(args[0]);
     	Scanner fileScanner = new Scanner(file);
