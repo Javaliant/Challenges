@@ -1,5 +1,13 @@
 /* Author: Luigi Vincent
-Pangrams, and stuff
+A Pangram is a sentence that contains all letters of the alphabet.
+
+Challenge: Write a program, which takes a sentence, and returns all the letters it is missing,
+which prevent it from being a pangram.
+
+Specifications: You should ignore the case of the letters in sentence.
+Your return should be all lower case letters, in alphabetical order.
+
+Found on CodeEval
 */
 
 import java.io.File;
