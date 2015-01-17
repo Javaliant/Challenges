@@ -1,0 +1,26 @@
+/* Author: Luigi Vincent
+Challenge: Write a program which checks input numbers
+and determines whether that number is even or not.
+Your program should accept as its first argument a path to a filename.
+
+Found on CodeEval
+*/
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class EvenChecker {
+	public static void main(String[] args) throws FileNotFoundException {
+		File file = new File(args[0]);
+		Scanner fileInput = new Scanner(file);
+
+		while(fileInput.hasNextLine()) {
+			evenCheck(fileInput.nextLine());
+		}
+	}
+
+	private static void evenCheck(String n) {
+		System.out.println((Integer.parseInt(n) & 1) == 0 ? 1 : 0); 
+	}
+}
