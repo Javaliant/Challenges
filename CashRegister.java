@@ -62,10 +62,10 @@ public class CashRegister {
 		float cashBack = cash - price;
 		StringBuilder change = new StringBuilder();
 
-		for (Denomination d : Denomination.values()) {
-   			while (cashBack >= d.getValue()) {
-        		cashBack -= d.getValue();
-        		change.append(d).append(',');
+		for (Currency c : Currency.values()) {
+   			while (cashBack >= c.getValue()) {
+        		cashBack -= c.getValue();
+        		change.append(c).append(',');
     		}
 		}
 		change.setLength(change.length() - 1);
@@ -73,7 +73,7 @@ public class CashRegister {
 		return change.toString();		
 	}
 
-	private enum Denomination {
+	private enum Currency {
 	    ONE_HUNDRED(100.00f),
 	          FIFTY( 50.00f),
 	         TWENTY( 20.00f),
@@ -89,7 +89,7 @@ public class CashRegister {
 
 	    private final float value;
 
-	    Denomination(float value) {
+	    Currency(float value) {
 	        this.value = value;
 	    }
 
