@@ -1,8 +1,7 @@
 /* Author: Luigi Vincent
 Challenge: Design a cash register program.
 
-Specifications: You will be given two float numbers.
-
+Specifications: 
 Your register currently has the following bills/coins within it:
 
 'PENNY': .01,
@@ -59,8 +58,8 @@ public class CashRegister {
 	private static String getCashChange(float price, float cash) {
 		if (cash < price) { return "ERROR"; }
 		if (cash == price) { return "ZERO"; }
-		float cashBack = cash - price;
 
+		float cashBack = cash - price;
 		StringBuilder change = new StringBuilder();
 
 		for (Denomination d : Denomination.values()) {
