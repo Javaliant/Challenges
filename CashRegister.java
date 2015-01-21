@@ -35,6 +35,7 @@ Found on CodeEval
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.math.BigDecimal;
 
 public class CashRegister {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -48,23 +49,21 @@ public class CashRegister {
 
 	private static void printCashChange(String line) {
 		String[] fields = line.split(";");
-
-		float pp = Float.parseFloat(fields[0]);
-		float ch = Float.parseFloat(fields[1]);
-
+		BigDecimal pp = new BigDecimal(fields[0]);
+		BigDecimal ch = new BigDecimal(fields[1]);
 		System.out.println(getCashChange(pp, ch));
 	}
 
-	private static String getCashChange(float price, float cash) {
-		if (cash < price) { return "ERROR"; }
-		if (cash == price) { return "ZERO"; }
+	private static String getCashChange(BigDecimal price, BigDecimal cash) {
+		if (cash.compareTo(price) == -1) { return "ERROR"; }
+		if (cash.compareTo(price) == 0) { return "ZERO"; }
 
-		float cashBack = cash - price;
+		BigDecimal cashBack = cash.subtract(price);
 		StringBuilder change = new StringBuilder();
 
 		for (Currency c : Currency.values()) {
-   			while (cashBack >= c.getValue()) {
-        		cashBack -= c.getValue();
+   			while (cashBack.compareTo(c.getValue()) != -1) {
+        		cashBack = cashBack.subtract(c.getValue());
         		change.append(c).append(',');
     		}
 		}
@@ -74,26 +73,26 @@ public class CashRegister {
 	}
 
 	private enum Currency {
-	    ONE_HUNDRED(100.00f),
-	          FIFTY( 50.00f),
-	         TWENTY( 20.00f),
-	            TEN( 10.00f),
-	           FIVE(  5.00f),
-	            TWO(  2.00f),
-	            ONE(  1.00f),
-	    HALF_DOLLAR(  0.50f),
-	        QUARTER(  0.25f),
-	           DIME(  0.10f),
-	         NICKEL(  0.05f),
-	          PENNY(  0.01f);
+	    ONE_HUNDRED(new BigDecimal("100.00")),
+	          FIFTY(new BigDecimal( "50.00")),
+	         TWENTY(new BigDecimal( "20.00")),
+	            TEN(new BigDecimal( "10.00")),
+	           FIVE(new BigDecimal(  "5.00")),
+	            TWO(new BigDecimal(  "2.00")),
+	            ONE(new BigDecimal(  "1.00")),
+	    HALF_DOLLAR(new BigDecimal(  "0.50")),
+	        QUARTER(new BigDecimal(  "0.25")),
+	           DIME(new BigDecimal(  "0.10")),
+	         NICKEL(new BigDecimal(  "0.05")),
+	          PENNY(new BigDecimal(  "0.01"));
 
-	    private final float value;
+	    private final BigDecimal value;
 
-	    Currency(float value) {
+	    Currency(BigDecimal value) {
 	        this.value = value;
 	    }
 
-	    public float getValue() {
+	    public BigDecimal getValue() {
 	        return this.value;
 	    }
 
