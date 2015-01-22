@@ -25,11 +25,17 @@ public class TrailingString {
 	}
 
 	private static void printTrailingString(String line) {
+		if (line.isEmpty()) { return; }
 		String[] arguments = line.split(",");
-		System.out.println(checkTrailingString(arguments[0], arguments[1]));
+		if (arguments[0].length() > 0 || arguments[1].length() > 0) {
+			System.out.println(
+				checkTrailingString(arguments[0], arguments[1])
+			);
+		}
 	}
 
 	private static int checkTrailingString(String str, String trailing) {
+		if (trailing.length() > str.length()) { return 0; }
 		return str.substring(str.length() - trailing.length())
 			.equals(trailing) ? 1 : 0;
 	}
