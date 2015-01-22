@@ -22,7 +22,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class SequencePosition {
-	static String sequence = "011212201220200112";
+	static String sequence = "0";
 
 	public static void main(String[] args) throws FileNotFoundException {
 		File file = new File(args[0]);
@@ -34,20 +34,30 @@ public class SequencePosition {
 	}
 
 	private static void printNumberInPosition(String line) {
-		int position = Integer.parseInt(line);
-		System.out.println(getNumberInPosition(position));
+		System.out.println(getNumberInPosition(Integer.parseInt(line)));
 	}
 
 	private static int getNumberInPosition(int position) {
 		StringBuilder sequenceBuilder = new StringBuilder(sequence);
+		StringBuilder newSequence = new StringBuilder();
 
 		while (sequenceBuilder.length() < position) {
-			sequenceBuilder.append(
-				sequence.replace('0', '1')
-						.replace('1', '2')
-						.replace('2', '0')
-			);
-		}
+			for (char c : sequenceBuilder.toString().toCharArray()) {
+				switch(c) {
+					case '0':
+						newSequence.append('1');
+					break;
+					case '1':
+						newSequence.append('2');
+					break;
+					case '2':
+						newSequence.append('0');
+					break;
+				}
+			}
+			sequenceBuilder.append(newSequence.toString());
+			newSequence.setLength(0);
+		}   
 
 		sequence = sequenceBuilder.toString();
 		return Character.getNumericValue(sequence.charAt(position));
