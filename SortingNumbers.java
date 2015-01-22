@@ -34,7 +34,7 @@ public class SortingNumbers {
 			sorted.add(Float.parseFloat(s));
 		}
 		for (float f : sorted) {
-			sortedNumbers.append(f).append(' ');
+			sortedNumbers.append(String.format("%.3f", f)).append(' ');
 		}
 		sortedNumbers.setLength(sortedNumbers.length() - 1);
 
