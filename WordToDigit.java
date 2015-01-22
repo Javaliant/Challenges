@@ -24,33 +24,45 @@ public class WordToDigit {
 		String[] nums = line.split(";");
 		StringBuilder numbers = new StringBuilder();
 		for (String s : nums) {
-			numbers.add(getNumber(s));
+			numbers.append(getNumber(s));
 		}
 		System.out.println(numbers.toString());
 	}
 	
 	private static int getNumber(String str) {
+		int number = 0;
 		switch(str) {
 			case "zero":
-				return 0;
+				number = 0;
+			break;
 			case "one":
-				return 1;
+				number = 1;
+			break;
 			case "two":
-				return 2;
+				number = 2;
+			break;
 			case "three":
-				return 3;
+				number = 3;
+			break;
 			case "four":
-				return 4;
+				number = 4;
+			break;
 			case "five":
-				return 5;
+				number = 5;
+			break;
 			case "six":
-				return 6;
+				number = 6;
+			break;
 			case "seven":
-				return 7;
+				number = 7;
+			break;
 			case "eight":
-				return 8;
+				number = 8;
+			break;
 			case "nine":
-				return 9;
+				number = 9;
+			break;
 		}
+		return number;
 	}
 }
