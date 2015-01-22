@@ -2,7 +2,7 @@
 
 Challenge: Write a program that swap the letter case in a sentence.
 
-Specifications: Your program should accept as its first argument a path to a filename.
+Specifications: Accept a path to a file as the first argument of the program.
 
 Input Example: 
 Hello world!
