@@ -44,7 +44,7 @@ public class AgeDistribution {
 	private static String getCategory(int age) {
 		if (age < 0 || age > 100) { return "This program is for humans"; }
 		if (age >= 66) { return "The Golden Years"; }
-		if (age >= 23) { return "Working for the Man"; }
+		if (age >= 23) { return "Working for the man"; }
 		if (age >= 19) { return "College"; }
 		if (age >= 15) { return "High school"; }
 		if (age >= 12) { return "Middle school"; }
