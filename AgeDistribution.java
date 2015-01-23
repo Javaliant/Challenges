@@ -34,9 +34,11 @@ public class AgeDistribution {
 	}
 
 	private static void printCategory(String line) {
-		System.out.println(
-			getCategory(Integer.parseInt(line))
-		);
+		if (!line.isEmpty()) {
+			System.out.println(
+				getCategory(Integer.parseInt(line))
+			);
+		}
 	}
 
 	private static String getCategory(int age) {
@@ -45,10 +47,9 @@ public class AgeDistribution {
 		if (age >= 23) { return "Working for the Man"; }
 		if (age >= 19) { return "College"; }
 		if (age >= 15) { return "High School"; }
-		if (age >= 12) {return "Middle School"; }
+		if (age >= 12) { return "Middle School"; }
 		if (age >= 5) { return "Elementary School"; }
 		if (age >= 3 ){ return "Preschool Maniac"; }
 		else { return "Still in Mama's arms"; }
 	}
-
 }
