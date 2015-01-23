@@ -46,9 +46,9 @@ public class AgeDistribution {
 		if (age >= 66) { return "The Golden Years"; }
 		if (age >= 23) { return "Working for the Man"; }
 		if (age >= 19) { return "College"; }
-		if (age >= 15) { return "High School"; }
-		if (age >= 12) { return "Middle School"; }
-		if (age >= 5) { return "Elementary School"; }
+		if (age >= 15) { return "High school"; }
+		if (age >= 12) { return "Middle school"; }
+		if (age >= 5) { return "Elementary school"; }
 		if (age >= 3 ){ return "Preschool Maniac"; }
 		else { return "Still in Mama's arms"; }
 	}
