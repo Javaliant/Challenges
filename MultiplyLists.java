@@ -36,7 +36,8 @@ public class MultiplyLists {
 		String[] params = line.split("\\|");
 		StringBuilder multiplied = new StringBuilder();
 
-		for (int n : getMultipliedList(params[0].split("\\s"), params[1].split("\\s"))) {
+
+		for (int n : getMultipliedList(params[0].trim().split("\\s+"), params[1].trim().split("\\s"))) {
 			multiplied.append(n).append(' ');
 		}
 		multiplied.setLength(multiplied.length() - 1);
@@ -48,8 +49,8 @@ public class MultiplyLists {
 		List<Integer> result = new ArrayList<>();
 
 		for (int i = 0; i < first.length; i++) {
-			result.add(						// This is a work around...
-				Integer.parseInt(first[i]) * Integer.parseInt(second[i + 1])
+			result.add(
+				Integer.parseInt(first[i]) * Integer.parseInt(second[i])
 			);
 		}
 		return result;
