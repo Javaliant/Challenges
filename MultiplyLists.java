@@ -22,8 +22,10 @@ import java.util.Scanner;
 
 public class MultiplyLists {
 	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File(args[0]);
-		Scanner fileInput = new Scanner(file);
+		Scanner fileInput = (args.length > 0) ? 
+			new Scanner(new File(args[0])) :
+			new Scanner(System.in)
+		;
 
 		while (fileInput.hasNextLine()) {
 			printMultipliedList(fileInput.nextLine());
