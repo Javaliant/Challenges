@@ -14,8 +14,8 @@ import java.util.Scanner;
 
 public class PrintingPrimes {
     public static void main(String[] args) throws FileNotFoundException {
-    	File file = new File(args[0]);
-    	Scanner fileScanner = new Scanner(file);
+    	Scanner fileScanner = new Scanner(new File(args[0]));
+    	
     	while (fileScanner.hasNext()) {
     		printPrimesUnder(fileScanner.nextLine());
     	}
