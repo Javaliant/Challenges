@@ -30,6 +30,7 @@ public class MToLast {
 	}
 
 	private static void printMToLast(String line) {
+		if (line.length() < 1) { return; }
 		int targetIndex = Character.getNumericValue(
 			line.charAt(line.length() - 1 )
 		);
