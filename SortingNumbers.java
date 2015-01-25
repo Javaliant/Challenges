@@ -17,8 +17,7 @@ import java.util.TreeSet;
 
 public class SortingNumbers {
 	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File(args[0]);
-		Scanner fileInput = new Scanner(file);
+		Scanner fileInput = new Scanner(new File(args[0]));
 
 		while(fileInput.hasNextLine()) {
 			printSortedNumbers(fileInput.nextLine());
