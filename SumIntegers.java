@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class SumIntegers {
 	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File(args[0]);
-		Scanner fileInput = new Scanner(file);
+		Scanner fileInput = new Scanner(new File(args[0]));
 		int sum = 0;
+		
 		while (fileInput.hasNextLine()) {
 			sum += Integer.parseInt(fileInput.nextLine());
 		}
