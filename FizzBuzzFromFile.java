@@ -32,8 +32,7 @@ import java.util.Scanner;
 
 public class FizzBuzzFromFile {
     public static void main(String[] args) throws FileNotFoundException {
-        File file = new File(args[0]);
-        Scanner fileScanner = new Scanner(file);
+        Scanner fileScanner = new Scanner(new File(args[0]));
         while (fileScanner.hasNextLine()) {
             printFizzBuzz(fileScanner.nextLine());
         }
