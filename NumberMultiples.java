@@ -19,8 +19,7 @@ import java.util.Scanner;
 
 public class NumberMultiples {
 	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File(args[0]);
-		Scanner in = new Scanner(file);
+		Scanner in = new Scanner(new File(args[0]));
 
 		while (in.hasNextLine()) {
 			printResult(in.nextLine());
