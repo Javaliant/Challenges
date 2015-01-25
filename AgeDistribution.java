@@ -25,8 +25,7 @@ import java.util.Scanner;
 
 public class AgeDistribution {
 	public static void main(String[] args) throws FileNotFoundException {
-		File ages = new File(args[0]);
-		Scanner file = new Scanner(ages);
+		Scanner file = new Scanner(new File(args[0]));
 
 		while (file.hasNextLine()) {
 			printCategory(file.nextLine());
