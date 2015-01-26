@@ -1,0 +1,30 @@
+/* Author: Luigi Vincent
+
+Challenge: Print out the grade school multiplication table upto 12*12.
+
+Specifications: 
+Print out the table in a matrix like fashion,
+each number formatted to a width of 4
+Right-align numbers and strip out leading/trailing spaceson each line.
+
+Found on CodeEval
+*/
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MultiplicationTable {
+	public static void main(String[] args) {
+		List<Integer> numbers = new ArrayList<Integer>() {
+			{ for (int i = 1; i <= 12; i++) { add(i); } }
+		};
+
+		for (int i = 1; i <= 12; i++) {
+			System.out.println();
+			
+			for (int n : numbers) {
+				System.out.printf("%4d", n * i );
+			}
+		}	 
+	}
+}
