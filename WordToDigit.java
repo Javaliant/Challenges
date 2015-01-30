@@ -12,10 +12,10 @@ import java.util.Scanner;
 
 public class WordToDigit {
 	public static void main(String[] args) throws FileNotFoundException {
-		Scanner fileInput = new Scanner(new File(args[0]));
+		Scanner input = new Scanner(new File(args[0]));
 
-		while (fileInput.hasNextLine()) {
-			printNumbers(fileInput.nextLine());
+		while (input.hasNextLine()) {
+			printNumbers(input.nextLine());
 		}
 	}
 
