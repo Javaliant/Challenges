@@ -17,15 +17,13 @@ public class DigitalRoot {
 	}
 
 	private static int getDigitalRoot(int num) {
+		if (Integer.toString(num).length() == 1) { return num; }
 		int result = 0;
 
 		for (char c : Integer.toString(num).toCharArray()) {
 			result += Character.getNumericValue(c);
 		}
-		if (Integer.toString(result).length() > 1) {
-			getDigitalRoot(result);
-		}
-
-		return result;
+		
+		return getDigitalRoot(result);	
 	}
 }
