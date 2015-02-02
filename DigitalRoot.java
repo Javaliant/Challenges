@@ -13,17 +13,11 @@ Found on Codewars
 
 public class DigitalRoot {
 	public static void main(String[] args) {
-		System.out.println(getDigitalRoot(942));
+		System.out.println(computeDigitalRoot(942)); // should be 6
+		System.out.println(computeDigitalRoot(16); // should be 7
 	}
 
-	private static int getDigitalRoot(int num) {
-		if (Integer.toString(num).length() == 1) { return num; }
-		int result = 0;
-
-		for (char c : Integer.toString(num).toCharArray()) {
-			result += Character.getNumericValue(c);
-		}
-		
-		return getDigitalRoot(result);	
+	public static int computeDigitalRoot(int n) {
+		return n == 0 ? 0 : n % 9 == 0 ? 9 : n % 9;
 	}
 }
