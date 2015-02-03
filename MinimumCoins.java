@@ -15,6 +15,9 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class MinimumCoins {
+	//from highest to lowest
+	private static final int PRIMARY = 5, SECONDARY = 3, TERTIARY = 1;
+
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(args[0]));
 
@@ -31,9 +34,9 @@ public class MinimumCoins {
 		int count = 0;
 
 		while (n != 0) {
-			if (n >= 5) { n -= 5; count++; }
-			else if (n >= 3) { n -= 3; count++; }
-			else { n -= 1; count++; }
+			if (n >= PRIMARY) { n -= PRIMARY; count++; }
+			else if (n >= SECONDARY) { n -= SECONDARY; count++; }
+			else { n -= TERTIARY; count++; }
 		}
 
 		return count;
