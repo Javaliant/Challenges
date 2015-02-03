@@ -16,21 +16,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class BinaryOnes {
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(args[0]));
 
 		while (input.hasNextLine()) {
-			printBinaryOnesCount(input.nextLine());
+			System.out.println(
+				Integer.bitCount(Integer.parseInt(input.nextLine()))
+			);
 		}
-	}
-
-	private static void printBinaryOnesCount(String line) {
-		System.out.println(binaryOnesCount(Integer.parseInt(line)));
-	}
-
-	private static int binaryOnesCount(int n) {
-		if (n < 2) { return n; }
-		return binaryOnesCount(n / 2) + n % 2;
 	}
 }
