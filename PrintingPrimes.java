@@ -1,7 +1,12 @@
 /* Author: Luigi Vincent
 Challenge: Print out the prime numbers less than a given number N.
+
+Specifications: 
 Your program should accept as its first argument a path to a filename.
-Each line in this file is one test case. Each test case will contain an integer.
+Each line in this file is one test case.
+For each test case,
+print out the prime numbers less than N, in ascending order, comma delimited.
+There should not be any spaces between the comma and numbers.
 
 Found on CodeEval
 */
@@ -9,22 +14,23 @@ Found on CodeEval
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class PrintingPrimes {
     public static void main(String[] args) throws FileNotFoundException {
-    	Scanner fileScanner = new Scanner(new File(args[0]));
+    	Scanner input = new Scanner(new File(args[0]));
     	
-    	while (fileScanner.hasNext()) {
-    		printPrimesUnder(fileScanner.nextLine());
+    	while (input.hasNext()) {
+    		printPrimesUnder(input.nextLine());
     	}
     }
 
     private static void printPrimesUnder(String line) {
         StringBuilder sb = new StringBuilder();
 
-        for (int n : getPrimesUnder(Integer.parseInt(line))) {
+        for (int n : computePrimesUnder(Integer.parseInt(line))) {
             sb.append(n).append(',');
         }
 
@@ -32,23 +38,20 @@ public class PrintingPrimes {
         System.out.println(sb.toString());
     }
 
-    private static List<Integer> getPrimesUnder(int limit) {
-        int prime;
-        List<Integer> primes = new ArrayList<>(),
-            numbers = new ArrayList<>()
-        ;
+    private static List<Integer> computePrimesUnder(int limit) {
+		boolean[] sieve = new boolean[limit];
+		Arrays.fill(sieve, true);
+		List<Integer> primes = new ArrayList<>();
 
-        for (int i = 2; i < limit; i++) {
-            numbers.add(i);
-        }
+		for (int prime = 2; prime < sieve.length; prime++) {
+    		if (sieve[prime]) {
+    			primes.add(prime);
+        		for (int np = prime * 2; np < sieve.length; np += prime) {
+            		sieve[np] = false;
+        		}
+        	}
+    	}
 
-        while (!numbers.isEmpty()) {
-            prime = numbers.get(0);
-            primes.add(prime);
-            for (int i = prime; i < limit; i += prime) {
-                numbers.remove((Integer)(i));
-            }
-        }
-        return primes;
-    }
+		return primes;
+	}
 }
