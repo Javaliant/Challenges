@@ -1,5 +1,10 @@
 /* Author: Luigi Vincent
-Challenge: Given two integers N and M, count the number of prime numbers between N and M (both inclusive)
+Challenge: Given two integers N and M,
+print the number of primes between N and M (both inclusive)
+
+Specifications:
+Your program should accept as its first argument a path to a filename.
+Each line in this file contains two comma separated positive integers
 
 Found on CodeEval
 */
@@ -7,6 +12,9 @@ Found on CodeEval
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -20,32 +28,32 @@ public class CountingPrimes {
 	}
 
 	private static void printPrimeCount(String line) {
-		int n = Integer.parseInt(line.split(",")[0]);
-		int m = Integer.parseInt(line.split(",")[1]);
+		String[] args = line.split(",");
 
-		System.out.println(countPrimesWithin(n, m));
+		System.out.println(
+			countPrimesWithin(
+				Integer.parseInt(args[0]), Integer.parseInt(args[1])
+			)
+		);
 	}
 
-	private static int countPrimesWithin(int first, int limit) {
-	    int primeCount = 0;
+	private static int countPrimesWithin(int lowLim, int limit) {
+		int count = 0;
+		boolean[] sieve = new boolean[limit + 1];
+		Arrays.fill(sieve, true);
 
-	    for (int i = first; i <= limit; i++) {
-	    	if (isPrime(i)) { primeCount++; }
-	    }
-	    
-	    return primeCount;
-	}
-	
-	public static boolean isPrime(int num) {
-	    if (num <= 3) { return num > 1; }
-	    if ((num & 1) == 0 || num % 3 == 0) { return false; }
+		for (int prime = 2; prime < sieve.length; prime++) {
+    		if (sieve[prime]) {
+    			if (prime >= lowLim) {
+    				count++;
+    			}
 
-	    int limit = (int) Math.sqrt(num);
+        		for (int np = prime * 2; np < sieve.length; np += prime) {
+            		sieve[np] = false;
+        		}
+        	}
+    	}
 
-	    for (int i = 5; i <= limit; i += 6) {
-	    	if (num % i == 0 || num % (i + 2) == 0) { return false; }
-	    }
-
-	    return true;
+		return count;
 	}
 }
