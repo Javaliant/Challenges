@@ -20,26 +20,28 @@ Found on CodeEval
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ArrayAbsurdity {
 	public static void main(String[] argument) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(argument[0]));
+		String line;
 		String[] args;
 
 		while (input.hasNextLine()) {
-			args = input.nextLine().split(";");
-			printDuplicate(args[0], args[1].split(","));
+			line = input.nextLine();
+
+			if (!line.isEmpty()) {
+				args = line.split(";");
+				printDuplicate(args[0], args[1].split(","));
+			}
 		}
 	}
 
 	private static void printDuplicate(String size, String[] nums) {
 		boolean[] absurd = new boolean[Integer.parseInt(size)];
-		int value;
-		Arrays.fill(absurd, false);
 
-		for (int i = 0; i < absurd.length; i++) {
+		for (int i = 0, value; i < absurd.length; i++) {
 			value = Integer.parseInt(nums[i]);
 
 			if (absurd[value]) {
