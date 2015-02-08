@@ -25,16 +25,18 @@ import java.util.Scanner;
 public class ArrayAbsurdity {
 	public static void main(String[] argument) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(argument[0]));
-		String line;
+		StringBuilder line = new StringBuilder();
 		String[] args;
 
 		while (input.hasNextLine()) {
-			line = input.nextLine();
+			line.append(input.nextLine());
 
-			if (!line.isEmpty()) {
-				args = line.split(";");
+			if (line.length() > 0) {
+				args = line.toString().split(";");
 				printDuplicate(args[0], args[1].split(","));
 			}
+			
+			line.setLength(0);
 		}
 	}
 
