@@ -32,16 +32,15 @@ public class ArrayAbsurdity {
 			line.append(input.nextLine());
 
 			if (line.length() > 0) {
-				args = line.toString().split(";");
-				printDuplicate(args[0], args[1].split(","));
+				printDuplicate(line.toString().split(";")[1].split(","));
 			}
-			
+
 			line.setLength(0);
 		}
 	}
 
-	private static void printDuplicate(String size, String[] nums) {
-		boolean[] absurd = new boolean[Integer.parseInt(size)];
+	private static void printDuplicate(String[] nums) {
+		boolean[] absurd = new boolean[nums.length];
 
 		for (int i = 0, value; i < absurd.length; i++) {
 			value = Integer.parseInt(nums[i]);
