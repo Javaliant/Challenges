@@ -42,8 +42,8 @@ public class ArrayAbsurdity {
 	private static void printDuplicate(String[] nums) {
 		boolean[] absurd = new boolean[nums.length];
 
-		for (int i = 0, value; i < absurd.length; i++) {
-			value = Integer.parseInt(nums[i]);
+		for (short i = 0, value; i < nums.length; i++) {
+			value = Short.parseShort(nums[i]);
 
 			if (absurd[value]) {
 				System.out.println(value);
