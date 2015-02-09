@@ -26,8 +26,7 @@ public class ArrayAbsurdity {
 	public static void main(String[] argument) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(argument[0]));
 		StringBuilder line = new StringBuilder();
-		String[] args;
-
+		
 		while (input.hasNextLine()) {
 			line.append(input.nextLine());
 
