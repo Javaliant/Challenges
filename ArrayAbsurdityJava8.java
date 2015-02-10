@@ -18,23 +18,23 @@ Print out the duplicated entry, each one on a new line.
 Found on CodeEval, java 8 implementation suggested by rolfl (CodeReview)
 */
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class ArrayAbsurdityJava8 {
     public static void main(String[] args) throws IOException {
-        Files.lines(new File(args[0]).toPath())
-                .filter(s -> !s.isEmpty())
-                .forEach(ArrayAbsurdityJava8::printDuplicate);
+        Files.lines(Paths.get(args[0]))
+            .filter(s -> !s.isEmpty())
+            .forEach(ArrayAbsurdityJava8::printDuplicate);
     }
 
     private static void printDuplicate(String line) {
-        int length = Integer.parseInt(line.split(";")[0]);
+    	int length = Integer.parseInt(line.split(";")[0]);
         int total = Arrays.stream(line.split(";")[1].split(","))
-                .mapToInt(Integer::parseInt)
-                .sum();
+                		.mapToInt(Integer::parseInt)
+                		.sum();
 
         System.out.println(total - (length - 1) * (length - 2) / 2);
     }
