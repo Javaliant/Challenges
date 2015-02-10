@@ -26,16 +26,16 @@ import java.util.Arrays;
 public class ArrayAbsurdityJava8 {
     public static void main(String[] args) throws IOException {
         Files.lines(new File(args[0]).toPath())
-            .filter(s -> !s.isEmpty())
-            .forEach(ArrayAbsurdityJava8::printDuplicate);
+                .filter(s -> !s.isEmpty())
+                .forEach(ArrayAbsurdityJava8::printDuplicate);
     }
 
     private static void printDuplicate(String line) {
-      int length = Integer.parseInt(line.split(";")[0]);
-      int sum = Arrays.stream(line.split(";")[1].split(","))
-                      .mapToInt(Integer::parseInt)
-                      .sum();
+        int length = Integer.parseInt(line.split(";")[0]);
+        int total = Arrays.stream(line.split(";")[1].split(","))
+                .mapToInt(Integer::parseInt)
+                .sum();
 
-      System.out.println(sum - (length - 1) * (length - 2) / 2);
+        System.out.println(total - (length - 1) * (length - 2) / 2);
     }
 }
