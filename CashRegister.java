@@ -54,8 +54,12 @@ public class CashRegister {
 	}
 
 	private static String getCashChange(BigDecimal price, BigDecimal cash) {
-		if (cash.compareTo(price) == -1) { return "ERROR"; }
-		if (cash.compareTo(price) == 0) { return "ZERO"; }
+		if (cash.compareTo(price) == -1) {
+			return "ERROR";
+		}
+		if (cash.compareTo(price) == 0) {
+			return "ZERO";
+		}
 
 		BigDecimal cashBack = cash.subtract(price);
 		StringBuilder change = new StringBuilder();
@@ -64,8 +68,9 @@ public class CashRegister {
    			while (cashBack.compareTo(c.getValue()) != -1) {
         		cashBack = cashBack.subtract(c.getValue());
         		change.append(c).append(',');
-    		}
+    			}
 		}
+		
 		change.setLength(change.length() - 1);
 
 		return change.toString();		
