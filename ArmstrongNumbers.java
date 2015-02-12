@@ -39,6 +39,6 @@ public class ArmstrongNumbers {
 	       armstrong /= 10;
     	}
 
-    	return armstrongNum == n;
+    	return (int)armstrongNum == n;
 	}
 }
