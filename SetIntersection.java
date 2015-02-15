@@ -15,9 +15,7 @@ Found on CodeEval
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedHashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class SetIntersection {
 	public static void main(String[] args) throws FileNotFoundException {
@@ -36,26 +34,26 @@ public class SetIntersection {
 		}
 	}
 
-	private static String findIntersection(int[] foo, int[] bar) {
-		Set<Integer> intersection = new LinkedHashSet<>();
+	private static String findIntersection(int[] list1, int[] list2) {
+		StringBuilder intersection = new StringBuilder();
 
-		for (int i = 0, j = 0; i < foo.length; i++) {
-			while (foo[i] > bar[j] && j < bar.length) {
+		for (int i = 0, j = 0; i < list1.length && j < list2.length; i++) {
+			while (list1[i] > list2[j] && j < list2.length) {
 				j++;
 			}
-			if (foo[i] < bar[j]) {
+			if (list1[i] < list2[j]) {
 				continue;
-			} else {
-				intersection.add(bar[j++]);
+			}
+			if (list1[i] == list2[j]) {
+				intersection.append(',').append(list2[j++]);
 			}
 		}
-
-		if (intersection.isEmpty()) {
-			return ""; // none found
+			
+		if (intersection.length() == 0) {
+			return "";
 		}
 
-		String result = intersection.toString();
-		return result.substring(1, result.length() - 1);
+		return intersection.toString().substring(1);
 	}
 	
 	private static int[] toIntArray(String[] array) {
