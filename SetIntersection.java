@@ -26,43 +26,46 @@ public class SetIntersection {
 			parts = input.nextLine().split(";");
 
 			System.out.println(
-				findIntersection(
-					toIntArray(parts[0].split(",")),
-					toIntArray(parts[1].split(","))
-				)
+				findIntersection(parts[0].split(","), parts[1].split(","))
 			);
 		}
 	}
 
-	private static String findIntersection(int[] list1, int[] list2) {
-		StringBuilder intersection = new StringBuilder();
+	private static String findIntersection(String[] arr1, String[] arr2) {
+	    StringBuilder result = new StringBuilder();
+	    int val1 = Integer.parseInt(arr1[0]);
+	    int val2 = Integer.parseInt(arr2[0]);
 
-		for (int i = 0, j = 0; i < list1.length && j < list2.length; i++) {
-			while (list1[i] > list2[j] && j < list2.length) {
-				j++;
-			}
-			if (list1[i] < list2[j]) {
-				continue;
-			}
-			if (list1[i] == list2[j]) {
-				intersection.append(',').append(list2[j++]);
-			}
-		}
-			
-		if (intersection.length() == 0) {
-			return "";
-		}
+	    for (int i = 0, j = 0; ; ) {
+	        if (val1 == val2) {
+	            result.append(',').append(val1);
 
-		return intersection.toString().substring(1);
-	}
-	
-	private static int[] toIntArray(String[] array) {
-		int[] nums = new int[array.length];
+	            if (++i < arr1.length) {
+	            	val1 = Integer.parseInt(arr1[i]);
+	            } else {
+	            	break;
+	            }
 
-		for (int i = 0; i < array.length; i++) {
-			nums[i] = Integer.parseInt(array[i]);
-		}
+	            if (++j < arr2.length) {
+	            	val2 = Integer.parseInt(arr2[j]);
+	            } else {
+	            	break;
+	            }
+	        } else if (val1 < val2) {
+	        	if (++i < arr1.length) {
+	            	val1 = Integer.parseInt(arr1[i]);
+	            } else {
+	            	break;
+	            }
+	        } else {
+	            if (++j < arr2.length) {
+	            	val2 = Integer.parseInt(arr2[j]);
+	            } else {
+	            	break;
+	            }
+	        }
+    	}
 
-		return nums;
-	}
+	    return result.length() == 0 ? "" : result.substring(1);
+	} 
 }
