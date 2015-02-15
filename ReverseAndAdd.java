@@ -27,34 +27,37 @@ public class ReverseAndAdd {
 		Scanner input = new Scanner(new File(args[0]));
 
 		while (input.hasNextLine()) {
-			findAndPrintPalindrome(input.nextLine());
+			printPalindromified(input.nextLine());
 		}
 	}
 
-	private static void findAndPrintPalindrome(String line){
-		System.out.println(getPalindrome(line));
+	private static void printPalindromified(String line) {
+		System.out.println(palindromify(line));
 	}
 
-	private static String getPalindrome(String line) {
-		int reverseCount = 0,
-			currentNum = Integer.parseInt(line)
-		;
+	private static String palindromify(String line) {
+		int stepCount = 0;
+		int currentNum = Integer.parseInt(line);
+		int reversed = reverse(currentNum);
 
-		while (!isPalindromic(currentNum)) {
-			currentNum += reverse(currentNum);
-			reverseCount++;
+		while (currentNum != reversed) {
+			currentNum += reversed;
+			stepCount++;
+			reversed = reverse(currentNum);
 		}
 
-		return reverseCount + " " + currentNum;
-	}
-
-	private static boolean isPalindromic(int s) {
-		return s == reverse(s);
+		return stepCount + " " + currentNum;
 	}
 
 	private static int reverse(int n) {
-		return Integer.parseInt(
-			new StringBuilder(Integer.toString(n)).reverse().toString()
-		);
+    	int reverse = 0;
+
+    	while (n != 0) {
+	        reverse *= 10;
+	        reverse += (n % 10);
+	        n /= 10;
+    	}
+    
+		return reverse;
 	}
 }
