@@ -39,7 +39,7 @@ public class SetIntersection {
 	private static String findIntersection(int[] foo, int[] bar) {
 		Set<Integer> intersection = new LinkedHashSet<>();
 
-		for (int i = 0, j = 0; i < foo.length; i++) {
+		for (int i = 0, j = 0; i < foo.length && j < bar.length; i++) {
 			if (foo[i] < bar[j]) {
 				continue;
 			} else if (foo[i] > bar[j]) {
