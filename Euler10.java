@@ -34,15 +34,25 @@ public class Euler10 {
     }
 
     public static boolean isPrime(int num) {
-    	if (num <= 3) { return num > 1; }
-    	if ((num & 1) == 0 || num % 3 == 0) { return false; }
+    	if (num <= 3) {
+    		return num > 1;
+    		
+    	}
+    	if ((num & 1) == 0 || num % 3 == 0) {
+    		return false;
+    		
+    	}
 
     	int limit = (int) Math.sqrt(num);
 
     	for (int i = 5; i <= limit; i += 6) {
-      		if (num % i == 0 || num % (i + 2) == 0) { return false; }
+      		if (num % i == 0 || num % (i + 2) == 0) {
+      			return false;
+      			
+      		}
     	}
+    	
     	return true;
-  	}
+  }
 }
 	
