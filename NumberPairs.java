@@ -28,9 +28,8 @@ public class NumberPairs {
 
 	private static void printPairs(String line) {
 		if (!line.isEmpty()) {
-			String[] args = line.split(";"),
-				helper = args[0].split(",")
-			;
+			String[] args = line.split(";");
+			String[] helper = args[0].split(",");
 			int checkingFor = Integer.parseInt(args[1]);
 			int[] numbersToCheck = new int[helper.length];
 
