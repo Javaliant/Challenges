@@ -1,68 +1,52 @@
 /* Author: Luigi Vincent
 
-Challenge:
+Challenge: Print the maximum beauty of strings.
 
 Specifications:
+The beauty of a string is the sum of the beauty of the letters within.
+The beauty of each letter is an integer between 1 and 26, inclusive.
+No two letters have the same beauty.
+Lettercase is irrelevant.
+Your program should accept as its first argument a path to a filename.
+Each line in this file has a sentence.
+Print out the maximum beauty of each sentence.
 
 Found on CodeEval
 */
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Set;
 
 public class BeautifulStrings {
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner input = new Scanner(new File(args[0]));
 
 		while (input.hasNextLine()) {
-			printMaximumBeauty(input.nextLine());
+			printMaxBeauty(input.nextLine());
 		}
 	}
 
-	private static void printMaximumBeauty(String line) {
-		System.out.println(
-			findMaximumBeauty(line
-				.replaceAll("[^a-zA-Z]", "")
-				.toLowerCase()
-				.toCharArray()
-			)
-		);
+	private static void printMaxBeauty(String line) {
+		System.out.println(computeMaxBeauty(line));
 	}
 
-	private static int findMaximumBeauty(char[] line) {
-		int beauty = 0;
-		int beautyVal = 26;
-		int count = 0;
-		Set<Character> uniqueCharacters = new HashSet<>();
-		List<Integer> appearanceCounts = new ArrayList<>();
+	private static int computeMaxBeauty(String text) {
+	    String sanitized = text.replaceAll("[^a-zA-Z]", "").toLowerCase();
+	    
+	    int[] counts = new int[26];
+	    for (int i = 0; i < sanitized.length(); i++) {
+	        counts[sanitized.charAt(i) - 'a']++;
+	    }
 
-		for (char c : line) {
-			uniqueCharacters.add(c);
-		}
+	    Arrays.sort(counts);
 
-		for (char u : uniqueCharacters) {
-			for (char c : line) {
-				if (u == c) {
-					count++;
-				}
-			}
+	    int beauty = 0;
+	    for (int i = 25; i >= 0 && counts[i] > 0; i--) {
+	        beauty += counts[i] * (i + 1);
+	    }
 
-			appearanceCounts.add(count);
-			count = 0;
-		}
-
-		Collections.sort(appearanceCounts, Collections.reverseOrder());
-
-		for (int i : appearanceCounts) {
-			beauty += i * beautyVal--;
-		}
-
-		return beauty;
+	    return beauty;
 	}
 }
