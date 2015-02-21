@@ -24,12 +24,8 @@ public class BeautifulStrings {
 		Scanner input = new Scanner(new File(args[0]));
 
 		while (input.hasNextLine()) {
-			printMaxBeauty(input.nextLine());
+			System.out.println(computeMaxBeauty(input.nextLine()));
 		}
-	}
-
-	private static void printMaxBeauty(String line) {
-		System.out.println(computeMaxBeauty(line));
 	}
 
 	private static int computeMaxBeauty(String text) {
