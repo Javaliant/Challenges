@@ -28,21 +28,16 @@ public class BeautifulStrings {
 		}
 	}
 
-	private static int computeMaxBeauty(String text) {
-	    String sanitized = text.replaceAll("[^a-zA-Z]", "").toLowerCase();
-	    
+	private static int beautyMax(String sentence) {
 	    int[] counts = new int[26];
-	    for (int i = 0; i < sanitized.length(); i++) {
-	        counts[sanitized.charAt(i) - 'a']++;
-	    }
-
+	    IntStream.range(0, sentence.length())
+	        .map(i -> (int)sentence.charAt(i))
+	        .map(c -> (c >= 'a' && c <= 'z')
+	                ? (c - 'a') 
+	                : ((c >= 'A' && c <= 'Z') ? (c - 'A') : -1 ))
+	        .filter(i -> i >= 0)
+	        .forEach(i -> counts[i]++);
 	    Arrays.sort(counts);
-
-	    int beauty = 0;
-	    for (int i = 25; i >= 0 && counts[i] > 0; i--) {
-	        beauty += counts[i] * (i + 1);
-	    }
-
-	    return beauty;
+	    return IntStream.range(0, 26).map(i -> counts[i] * (i + 1)).sum();
 	}
 }
