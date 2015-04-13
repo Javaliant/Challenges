@@ -1,0 +1,39 @@
+/* Author: Luigi Vincent
+
+*/
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class JugglingZeros {
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner input = new Scanner(new File(args[0]));
+
+		while (input.hasNextLine()) {
+			System.out.println(
+				Integer.parseInt(zerosToBinaryString(input.nextLine()), 2));
+		}
+	}
+
+	public static String zerosToBinaryString(String line) {
+		String[] input = line.split("\\s");
+		boolean flag = true;
+		int flagVal = 0;
+		StringBuilder result = new StringBuilder();
+
+		for (int i = 0 ; i < input.length; i++) {
+			if (flag) {
+				flagVal = input[i].equals("0") ? 0 : 1;
+				flag = false;
+			} else {
+				for (int j = 0; j < input[i].length(); j++) {
+					result.append(flagVal);
+				}
+				flag = true;
+			}
+		}
+
+		return result.toString();
+	}
+}
