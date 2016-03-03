@@ -50,10 +50,10 @@ public class CashRegister {
 		String[] fields = line.split(";");
 		BigDecimal pp = new BigDecimal(fields[0]);
 		BigDecimal ch = new BigDecimal(fields[1]);
-		System.out.println(getCashChange(pp, ch));
+		System.out.println(computeChange(pp, ch));
 	}
 
-	private static String getCashChange(BigDecimal price, BigDecimal cash) {
+	private static String computeChange(BigDecimal price, BigDecimal cash) {
 		if (cash.compareTo(price) == -1) {
 			return "ERROR";
 		}
@@ -102,7 +102,7 @@ public class CashRegister {
 
 	    @Override
 	    public String toString() {
-	        return this.name().replace("_", " ");
+	        return name().replace("_", " ");
 	    }
 	}
 }
